@@ -8,8 +8,8 @@ def start():
     return 'Миссия Колонизация Марса'
 
 
-@app.route('/form_sample', methods=['POST', 'GET'])
-def form_sample():
+@app.route('/astronaut_selection', methods=['POST', 'GET'])
+def astronaut_selection():
     if request.method == 'GET':
         return f'''<!doctype html>
                         <html lang="en">
