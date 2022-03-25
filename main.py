@@ -1,5 +1,4 @@
 from flask import Flask, url_for
-
 app = Flask(__name__)
 
 
@@ -8,83 +7,49 @@ def start():
     return 'Миссия Колонизация Марса'
 
 
-@app.route('/index')
-def index():
-    return "И на Марсе будут яблони цвести!"
-
-
-@app.route('/promotion')
-def promotion():
-    promotion_list = ['Человечество вырастает из детства.', 'Человечеству мала одна планета.',
-                      'Мы сделаем обитаемыми безжизненные пока планеты.', 'И начнем с Марса!', 'Присоединяйся!']
-    return '</br>'.join(promotion_list)
-
-
-@app.route('/sample_page')
-def return_sample_page():
-    return """<!doctype html>
-                <html lang="en">
-                  <head>
-                    <meta charset="utf-8">
-                    <title>Привет, Яндекс!</title>
-                  </head>
-                  <body>
-                    <h1>Первая HTML-страница</h1>
-                  </body>
-                </html>"""
-
-
-@app.route('/image_mars')
-def image_mars():
+@app.route('/carousel')
+def carousel():
     return f"""<!doctype html>
-                    <html lang="en">
-                      <head>
-                        <meta charset="utf-8">
-                        <title>Привет, Марс!</title>
-                      </head>
-                      <body>
-                        <h1>Жди нас, Марс!</h1>
-                        <img src="{url_for('static', filename='img/download.jpg')}">
-                        <br>Вот она какая, красная планета.
-                      </body>
-                    </html>"""
-
-
-@app.route('/promotion_image')
-def promotion_image():
-    promotion_list = ['Человечество вырастает из детства.', 'Человечеству мала одна планета.',
-                      'Мы сделаем обитаемыми безжизненные пока планеты.', 'И начнем с Марса!', 'Присоединяйся!']
-    return f"""<!doctype html>
-                    <html lang="en">
-                      <head>
-                        <meta charset="utf-8">
-                        <link rel="stylesheet" 
-                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
-                        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
-                        crossorigin="anonymous">
-                        <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
-                        <title>Колонизация</title>
-                      </head>
-                      <body>
-                        <h1>Жди нас, Марс!</h1>
-                        <img src="{url_for('static', filename='img/download.jpg')}">
-                        <div class="alert alert-dark" role="alert">
-                            {promotion_list[0]}
-                        </div>
-                        <div class="alert alert-success" role="alert">
-                            {promotion_list[1]}
-                        </div>
-                        <div class="alert alert-secondary" role="alert">
-                            {promotion_list[2]}
-                        </div>
-                        <div class="alert alert-warning" role="alert">
-                            {promotion_list[3]}
-                        </div>
-                        <div class="alert alert-danger" role="alert">
-                            {promotion_list[4]}
-                        </div>
-                      </body>
-                    </html>"""
+                        <html lang="en">
+                          <head>
+                            <meta charset="utf-8">
+                            <link rel="stylesheet" 
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+                             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                              integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+                              integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+                              integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}"/>
+                            <title>Привет, Марс!</title>
+                          </head>
+                          <body>
+                            <h1>Пейзажи Марса!</h1>
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                      <img class="d-block w-100" src="{url_for('static', filename='img/first_slide.jpg')}" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="d-block w-100" src="{url_for('static', filename='img/second_slide.jpg')}" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="d-block w-100" src="{url_for('static', filename='img/third_slide.jpg')}" alt="Third slide">
+                                    </div>
+                                </div>
+                              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div>
+                          </body>
+                        </html>"""
 
 
 if __name__ == '__main__':
